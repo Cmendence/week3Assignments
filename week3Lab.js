@@ -43,23 +43,28 @@ alphabetArray = alphabetArray.join(' ')
 console.log(' \n Question 3: array1 \n ');
 let array1 = [1, 5, 6, 9, 10, 14];
 //Using array1 above, solve the following questions
-    // a. Print the 3rd element in array1  
-    // b. Print the last element in array1
-    // c. Add 16 and 3 to array1 (see built-in array "push" method)
-    //          and Print the updated array.
-    // d. Print the 3rd element again.
-    // e. Print the last element again. Did it change from earlier? Are you able to get the last element that was just added?
+  
 
 // YOUR CODE BELOW THIS LINE
 
-
+    // a. Print the 3rd element in array1  
 console.log(array1[2]);
+
+    // b. Print the last element in array1
 console.log(array1[array1.length -1]);
 
+    // c. Add 16 and 3 to array1 (see built-in array "push" method)
+
 array1.push(16, 3);
+
+  //          and Print the updated array.
 console.log(array1);
 
+    // d. Print the 3rd element again.
 console.log(array1[2]);
+
+// e. Print the last element again. Did it change from earlier? 
+    //Are you able to get the last element that was just added?
 console.log(array1[array1.length -1]);
 
 
@@ -67,19 +72,37 @@ console.log(array1[array1.length -1]);
 // Question 4: Todo List
 console.log(' \n Question 4: Todo List \n ');
 // In this task, you will do multiple tasks. Print results to the console after every change to the array(s).
-    // a. Create a variable called myTodoList that holds an empty array
-    // b. Add three todo items (elements) to the array using a built-in array method
-    // c. Remove the second item (element) in the array
-    // d. Create another array, yourTodoList, and add two todo items
-    // e. Create another array, ourTodoList
-    // f. Combine myTodoList and yourTodoList into ourTodoList (see built-in array "concat" method or "spread" operator for an idea how to accomplish this task). Either method is fine.
-
 // YOUR CODE BELOW THIS LINE
 
+ // a. Create a variable called myTodoList that holds an empty array
+ let myTodoList = []
 
-
-
-
+ // b. Add three todo items (elements) to the array using a built-in array method
+ myTodoList.push('Gym', 'Tan', 'Laundry');
+ 
+ console.log(myTodoList);
+ 
+  // c. Remove the second item (element) in the array
+ 
+  todoListIndex =[]
+  myTodoList.splice(1,1);
+ 
+  console.log(myTodoList);
+ 
+ // d. Create another array, yourTodoList, and add two todo items
+ 
+ let yourTodoList = ['Shake', 'Bake'];
+ 
+ // e. Create another array, ourTodoList
+ 
+ let ourTodoList = ['Trash', 'Dishes', 'Vacuum'];
+ 
+ // f. Combine myTodoList and yourTodoList into ourTodoList (see built-in array "concat" method or "spread"
+ //    operator for an idea how to accomplish this task). Either method is fine.
+ 
+ ourTodoList = [...ourTodoList,...yourTodoList, ...myTodoList];
+ 
+ console.log(ourTodoList);
 
 /*
  * Video 2:  FUNCTIONS
@@ -100,11 +123,15 @@ console.log(' \n Question 5: isEven \n ');
 //YOUR CODE BELOW THIS LINE
 
 
+function isEven(x){
+    if (x % 2 === 0){
+        return true;
+    } else {
+        return false;
+    }
+}
 
-
-
-
-
+console.log(isEven(30));
 
 
 // Sample test cases for the above isEven function (uncomment to test)
@@ -132,12 +159,27 @@ console.log(' \n Question 6: addingMachine \n ');
 // YOUR CODE BELOW THIS LINE
 
 
+// const arr1 = [29.76, 41.85, 46.5, 87.11];
+
+// const sum = arr1.reduce((total, amount) => total + amount); 
+
+
+let arrSum = 0
+
+const arr1 = [29.76, 41.85, 46.5, 87.88];
+function addingMachine(array){
+    let arrSum = 0
+    for (i = 0; i < array.length; i++){
+      arrSum += array[i];
+    } return arrSum
+} 
+
+console.log(addingMachine(arr1))
 
 
 
 
-
-
+// const sum = arr1.reduce((total, amount) => total + amount); 
 
 // Sample test cases for the above addingMachine function (uncomment to test)
 // console.log(addingMachine([1, 2, 3, 4, 5])); //should return 15
@@ -165,18 +207,43 @@ console.log(' \n Question 7: reverse \n ');
 
 // YOUR CODE BELOW THIS LINE
 
+function reverse(x){
+    
+    // If it's a boolean, return the opposite
+    if (typeof x === 'boolean'){
+       return !x
+    // If it's a number, return the reverse (i.e. 1234 becomes 4321)   
+    } else if (typeof x === 'number'){
+        return x.toString().split('').reverse().join('')
+        
+    // If it's a string, return the reversed string 
+    //(i.e. 'hello' becomes 'olleh'
+    } else if (typeof x === 'string'){
+        return x.split("").reverse().join("")
 
+//split the string into an array
+        x = x.split('');
 
+       console.log(x);
+//reverse the new array
+       x = x.reverse();
 
+       console.log(x);
+//join each element of the array
+       x = x.join('');
 
+       return x;
+       
+    // If it's an array, return the reversed array with each element reversed 
+    //	(i.e. ['hello', 'world'] becomes ['dlrow', 'olleh']) 
+    } else if (Array.isArray(x)){
+        x = x.reverse();
+        return x;
+    } else {
+        return false;
+    }
 
-
-
-
-
-
-
-
+}
 
 
 // Sample test cases for the above reverse function (uncomment to test)
@@ -198,12 +265,18 @@ console.log(' \n Question 8: removeElements \n ');
     // Return the empty array
     
 // YOUR CODE BELOW THIS LINE
+numArr = [1,2,3,4,5,6,7]
 
+function removeElements(array){
 
+    while (array.length > 0){
+      array.pop()  
+      console.log(array)
+    }
+    return array
+}
 
-
-
-
+console.log(removeElements(numArr));
 
 
 // Sample test cases for the above removeElements function (uncomment to test)
@@ -214,7 +287,8 @@ console.log(' \n Question 8: removeElements \n ');
 
 // Question 9: whichArrayIsLonger
 console.log(' \n Question 9: whichArrayIsLonger \n ');
-// Create a function called whichArrayIsLonger. The purpose of this function is to determine which array has the most elements
+// Create a function called whichArrayIsLonger. The purpose of this function is to determine 
+//which array has the most elements
     // This function takes in two parameters (array1, array2)
     // You can use conditional statements to determine which array has the most elements
     // This function will return the array that has the most elements
@@ -225,13 +299,21 @@ console.log(' \n Question 9: whichArrayIsLonger \n ');
     //		the length of the array **
 
 // YOUR CODE BELOW THIS LINE
+bork1 = [1,2,3,4,5,6]
+bork2 = [1,2,3,4,5]
+function whichArrayIsLonger(array1,array2){
 
+if (array1.length === array2.length){
+    return false;
+} else if (array1.length > array2.length){
+    return array1;
+} else {
+    return array2;
+}
 
+}
 
-
-
-
-
+console.log(whichArrayIsLonger(bork1,bork2));
 
 
 

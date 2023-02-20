@@ -39,10 +39,14 @@ for (let i = 0; i < names.length; i++){
 console.log(namesTotal / names.length);
 
 
-// 2b. Use a loop to iterate through the array again and concatenate all the names together, separated by spaces. 
+// 2b. Use a loop to iterate through the array again and concatenate 
+//all the names together, separated by spaces. 
 
-console.log(names.join(' '));
-
+let stringNames = ''
+for (let items of names){
+   stringNames += items + ' ';
+}
+console.log(stringNames)
 // 3.  How do you access the last element of any array?
 
 array[array.length -1];
@@ -51,38 +55,153 @@ array[array.length -1];
 
 array[0];
 
-// 5.  Create a new array called nameLengths. Write a loop to iterate over the previously created names array and add the length of each name to the nameLengths array.
+// 5.  Create a new array called nameLengths. Write a loop to iterate 
+// over the previously created names array and add the length of each name
+//  to the nameLengths array.
 
 // For example:
 
 // let names = ["Kelly", "Sam", "Kate"];    // starting with this array
 // let nameLengths = [5, 3, 4];             // create a new array
 
-let nameLengths;
+let nameLengths = 0
 
-// 6.  Write a loop to iterate over the nameLengths array and calculate the sum of all the elements in the array. 
+for (let i = 0; i < names.length; i++){
+
+    console.log(names[i].length);
+    nameLengths = names[i].length;
+    
+}
+console.log(nameLengths)
+
+// 6.  Write a loop to iterate over the nameLengths array and 
+//calculate the sum of all the elements in the array. 
+
+for (let i = 0; i < names.length; i++){
+    nameLengths += names[i].length;
+    
+}
+console.log(nameLengths);
+
+// 7.  Write a function that takes two parameters, word and n, 
+// as arguments and returns the word concatenated to itself n number 
+// of times. (i.e. if I pass in ‘Hello’ and 3, I would expect the function
+//      to return ‘HelloHelloHello’).
+
+function concat(word, n){
+    let names = '';
+    for (let i = 0; i < n; i++){
+       names +=word
+    } return names
+}
+
+console.log(concat('dark', 4))
+
+// 8.  Write a function that takes two parameters, firstName and lastName, 
+// and returns a full name.  The full name should be the first and the last 
+// name separated by a space.
+
+function fullName(firstName,lastName){
+    return firstName + ' ' + lastName
+}
+
+console.log(fullName('Margaret','Thatcher'))
+
+// 9.  Write a function that takes an array of numbers and returns true 
+// if the sum of all the numbers in the array is greater than 100.
+
+let myArray = [16, 62, 15, 6];
+
+function greatArray(arr){
+    let sum = 0;
+for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+    
+}
+
+if (sum >=100){
+    return true;
+} else {
+    return false;
+}
+}
+
+console.log(greatArray(myArray));
+
+// 10.  Write a function that takes an array of numbers and returns 
+//the average of all the elements in the array.
+
+function avgArray(arr){
+    let sum = 0;
+for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+    
+}
+return sum / arr.length;
+}
+console.log(avgArray(myArray));
+
+// 11.  Write a function that takes two arrays of numbers and 
+// returns true if the average of the elements in the first array is 
+// greater than the average of the elements in the second array.
+
+function compareArray(arr1,arr2){
+    let sum1 = 0;
+    let sum2 = 0;
+
+for (let i = 0; i < arr1.length; i++) {
+    sum1 += arr1[i];
+}
+
+for (let i = 0; i < arr2.length; i++) {
+    sum2 += arr2[i];
+}
 
 
-// 7.  Write a function that takes two parameters, word and n, as arguments and returns the word concatenated to itself n number of times. (i.e. if I pass in ‘Hello’ and 3, I would expect the function to return ‘HelloHelloHello’).
+if ((sum1 / arr1.length) > (sum2 / arr2.length)){
+    return true;
+} else {
+    return false;
+}
+}
 
 
-// 8.  Write a function that takes two parameters, firstName and lastName, and returns a full name.  The full name should be the first and the last name separated by a space.
+console.log(compareArray(myArray1,myArray2));
 
+// 12.  Write a function called willBuyDrink that takes a 
+// boolean isHotOutside, and a number moneyInPocket, and 
+// returns true if it is hot outside and if moneyInPocket is greater than 10.50.
+isHotOutside = false
 
+function willBuyDrink(isHotOutside, moneyInPocket){
+    if (isHotOutside && moneyInPocket > 10.50){
+        return true
+    } else {
+        return false
+    }
+}
 
-// 9.  Write a function that takes an array of numbers and returns true if the sum of all the numbers in the array is greater than 100.
-
-
-// 10.  Write a function that takes an array of numbers and returns the average of all the elements in the array.
-
-
-// 11.  Write a function that takes two arrays of numbers and returns true if the average of the elements in the first array is greater than the average of the elements in the second array.
-
-
-// 12.  Write a function called willBuyDrink that takes a boolean isHotOutside, and a number moneyInPocket, and returns true if it is hot outside and if moneyInPocket is greater than 10.50.
-
+console.log(willBuyDrink(isHotOutside, 11))
 
 // 13.  Create a function of your own that solves a problem. 
 
 // In comments, write what the function does and why you created it.
 
+
+/* in the casino game Craps, there is a type of bet called a place bet. These bets pay different
+depending on the difficulty in hitting the number. For the 6 and 8, you must bet increments of $6,
+and every $6 pays $7. This function takes the bet amount and tells you wether or not it's a 
+'proper bet'(increments of 6) and returns the bet amount and payout. If it is not a proper bet, 
+the function will return "No bet! Improper amount" which is true to live casinos.
+*/
+
+
+function placeSixOrEight(bet){
+    if (bet >=6 && bet % 6 === 0){
+        return `That's a bet! ${bet} pays ${(bet / 6) * 7}`;
+    } else {
+        return 'No bet! Improper amount!'
+    }
+}
+
+console.log(placeSixOrEight());
