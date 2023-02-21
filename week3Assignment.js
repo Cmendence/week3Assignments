@@ -2,6 +2,8 @@
 
 let ages = [3, 9, 23, 64, 2, 8, 28, 93];
 
+console.log(ages);
+
 // 1a.Programmatically subtract the value of the first element in the array from the value in the last element of the array.  
 
 console.log(ages[ages.length -1] - ages[0]);
@@ -11,6 +13,7 @@ console.log(ages[ages.length -1] - ages[0]);
 // 1b. Add a new age to your array and repeat the step above to ensure it is dynamic. (works for arrays of different lengths).
 
 ages.push(37);
+
 console.log(ages);
 
 // 1c. Use a loop to iterate through the array and calculate the average age. 
@@ -30,8 +33,7 @@ let namesTotal= 0
 let names = ['Sam', 'Tommy', 'Tim', 'Sally', 'Buck', 'Bob'];
 
 for (let i = 0; i < names.length; i++){
-
-    console.log(names[i].length);
+    
     namesTotal += names[i].length;
     console.log(namesTotal)
 }
@@ -45,15 +47,18 @@ console.log(namesTotal / names.length);
 let stringNames = ''
 for (let items of names){
    stringNames += items + ' ';
+   
 }
+
 console.log(stringNames)
+
 // 3.  How do you access the last element of any array?
 
-array[array.length -1];
+//array[array.length -1];
 
 // 4.  How do you access the first element of any array?
 
-array[0];
+//array[0];
 
 // 5.  Create a new array called nameLengths. Write a loop to iterate 
 // over the previously created names array and add the length of each name
@@ -64,23 +69,27 @@ array[0];
 // let names = ["Kelly", "Sam", "Kate"];    // starting with this array
 // let nameLengths = [5, 3, 4];             // create a new array
 
-let nameLengths = 0
-
-for (let i = 0; i < names.length; i++){
-
-    console.log(names[i].length);
-    nameLengths = names[i].length;
+function getNameLengths(arr){
+    let nameLengths = []
     
-}
-console.log(nameLengths)
+    for (let i = 0; i < arr.length; i++){
+        nameLengths.push(arr[i].length);
+    }
+    return nameLengths
+    }
+    
+    console.log(getNameLengths(names))
 
 // 6.  Write a loop to iterate over the nameLengths array and 
 //calculate the sum of all the elements in the array. 
 
+let nameLengths = 0
+
 for (let i = 0; i < names.length; i++){
     nameLengths += names[i].length;
-    
+
 }
+
 console.log(nameLengths);
 
 // 7.  Write a function that takes two parameters, word and n, 
@@ -95,22 +104,23 @@ function concat(word, n){
     } return names
 }
 
-console.log(concat('dark', 4))
+console.log(concat('bork', 3))
 
 // 8.  Write a function that takes two parameters, firstName and lastName, 
 // and returns a full name.  The full name should be the first and the last 
 // name separated by a space.
 
-function fullName(firstName,lastName){
-    return firstName + ' ' + lastName
+const fullName = (firstName,lastName) => {
+    return `${firstName} ${lastName}`;
 }
 
-console.log(fullName('Margaret','Thatcher'))
+console.log(fullName('Margaret','Thatcher'));
 
 // 9.  Write a function that takes an array of numbers and returns true 
 // if the sum of all the numbers in the array is greater than 100.
 
-let myArray = [16, 62, 15, 6];
+let myArray1 = [16, 62, 15, 6];
+let myArray2 = [10, 15, 20, 30, 50];
 
 function greatArray(arr){
     let sum = 0;
@@ -126,7 +136,7 @@ if (sum >=100){
 }
 }
 
-console.log(greatArray(myArray));
+console.log(greatArray(myArray1));
 
 // 10.  Write a function that takes an array of numbers and returns 
 //the average of all the elements in the array.
@@ -139,7 +149,8 @@ for (let i = 0; i < arr.length; i++) {
 }
 return sum / arr.length;
 }
-console.log(avgArray(myArray));
+
+console.log(avgArray(myArray1));
 
 // 11.  Write a function that takes two arrays of numbers and 
 // returns true if the average of the elements in the first array is 
@@ -157,7 +168,6 @@ for (let i = 0; i < arr2.length; i++) {
     sum2 += arr2[i];
 }
 
-
 if ((sum1 / arr1.length) > (sum2 / arr2.length)){
     return true;
 } else {
@@ -171,6 +181,7 @@ console.log(compareArray(myArray1,myArray2));
 // 12.  Write a function called willBuyDrink that takes a 
 // boolean isHotOutside, and a number moneyInPocket, and 
 // returns true if it is hot outside and if moneyInPocket is greater than 10.50.
+
 isHotOutside = false
 
 function willBuyDrink(isHotOutside, moneyInPocket){
@@ -205,3 +216,27 @@ function placeSixOrEight(bet){
 }
 
 console.log(placeSixOrEight());
+
+
+const placeNums = [4,5,6,8,9,10];
+function placeBet(bet, num){
+    let payout = 0
+    if (bet >=6 && bet % 6 === 0 && (num === 6 || num === 8)) {
+        payout = (bet / 6) * 7;
+        return `That's a bet! ${bet} on the ${num} pays ${payout}`;
+    } else if (bet >=5 && bet % 5 === 0 && (num === 5 || num === 9)) {
+        payout = (bet / 5) * 7;
+        return `That's a bet! ${bet} on the ${num} pays ${payout}`;
+    } else if (bet >=5 && bet % 5 === 0 && (num === 4 || num === 10)) {
+        payout = (bet / 5) * 9
+        return `That's a bet! ${bet} on the ${num} pays ${payout}`;
+    } else if(!placeNums.includes(num)){
+        return 'Invalid Number'
+    } else {
+        return 'No bet! Not a proper amount!';
+    } 
+        
+    }
+
+
+console.log(placeBet(30,10))
