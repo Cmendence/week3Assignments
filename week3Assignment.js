@@ -54,11 +54,12 @@ console.log(stringNames)
 
 // 3.  How do you access the last element of any array?
 
-//array[array.length -1];
+console.log(names[names.length -1]);
 
 // 4.  How do you access the first element of any array?
 
-//array[0];
+console.log(names[0]);
+
 
 // 5.  Create a new array called nameLengths. Write a loop to iterate 
 // over the previously created names array and add the length of each name
